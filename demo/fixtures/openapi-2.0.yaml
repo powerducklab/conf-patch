@@ -1,0 +1,184 @@
+swagger: "2.0"
+
+info:
+  version: 1.1.0
+  title: ""
+  description: A complete Swagger 2.0 example API.
+  x-titlea: aaa
+
+host: api.example.com
+basePath: /v1
+schemes:
+  - https
+  - http
+
+consumes:
+  - application/json
+
+produces:
+  - application/json
+
+tags:
+  - name: pets
+    description: Pet management operations.
+
+paths:
+  /pets:
+    get:
+      tags:
+        - pets
+      summary: List pets
+      description: Returns a paginated collection of pets.
+      operationId: listPets
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return.
+          required: false
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 100
+          default: 20
+      responses:
+        "200":
+          description: A list of pets.
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Pet"
+        "400":
+          description: Invalid query parameter.
+          schema:
+            $ref: "#/definitions/Error"
+        "404":
+          description: Resource not found
+
+    post:
+      tags:
+        - pets
+      summary: Create a pet
+      operationId: createPet
+      parameters:
+        - name: pet
+          in: body
+          description: The pet to create.
+          required: true
+          schema:
+            $ref: "#/definitions/CreatePetRequest"
+      responses:
+        "201":
+          description: Pet created successfully.
+          schema:
+            $ref: "#/definitions/Pet"
+        "400":
+          description: Invalid request body.
+          schema:
+            $ref: "#/definitions/Error"
+
+  /pets/{petId}:
+    get:
+      tags:
+        - pets
+      summary: Get a pet by ID
+      operationId: getPetById
+      parameters:
+        - $ref: "#/parameters/PetId"
+      responses:
+        "200":
+          description: The requested pet.
+          schema:
+            $ref: "#/definitions/Pet"
+        "404":
+          description: Pet not found.
+          schema:
+            $ref: "#/definitions/Error"
+
+    delete:
+      tags:
+        - pets
+      summary: Delete a pet
+      operationId: deletePet
+      parameters:
+        - $ref: "#/parameters/PetId"
+      responses:
+        "204":
+          description: Pet deleted successfully.
+        "404":
+          description: Pet not found.
+          schema:
+            $ref: "#/definitions/Error"
+
+parameters:
+  PetId:
+    name: petId
+    in: path
+    description: Unique pet identifier.
+    required: true
+    type: string
+    format: uuid
+
+definitions:
+  Pet:
+    type: object
+    required:
+      - id
+      - name
+      - status
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: "7d56dd9c-093e-4f98-a334-d76262505519"
+      name:
+        type: string
+        minLength: 1
+        example: Milo
+      species:
+        type: string
+        enum:
+          - dog
+          - cat
+          - bird
+        example: dog
+      status:
+        type: string
+        enum:
+          - available
+          - adopted
+        example: available
+      createdAt:
+        type: string
+        format: date-time
+        example: "2026-08-26T12:00:00Z"
+
+  CreatePetRequest:
+    type: object
+    required:
+      - name
+      - species
+    properties:
+      name:
+        type: string
+        minLength: 1
+        example: Milo
+      species:
+        type: string
+        enum:
+          - dog
+          - cat
+          - bird
+        example: dog
+
+  Error:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+        example: PET_NOT_FOUND
+      message:
+        type: string
+        example: No pet exists for the supplied identifier.

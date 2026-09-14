@@ -1,0 +1,11 @@
+{
+  // Application feature switches
+  "features": {
+    "beta": true,
+    "autoSave": true,
+  },
+  "ui": {
+    "theme": "light",
+    "fontSize": 14,
+  },
+}
