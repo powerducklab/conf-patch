@@ -300,7 +300,7 @@ const doc = await validateOpenAPIFile("./openapi.json", {
 
 ```typescript
 import type {
-  PatchOperation,
+  JsonPatchOp,
   ConfigFormat,
   ValidateOpenApiOptions,
   OpenApiValidationError,
