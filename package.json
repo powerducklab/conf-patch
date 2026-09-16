@@ -1,6 +1,6 @@
 {
   "name": "@powerduck/conf-patch",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Two-layer configuration editor: pure core for patching JSON/JSONC/YAML strings (browser-safe), plus file layer with atomic writes and locking for Node.js/Electron. RFC 6902 JSON Patch, comment and formatting preservation, OpenAPI validation.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
