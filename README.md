@@ -59,7 +59,7 @@ await setConfigValue("config.yaml", ["database", "port"], 5432);
 
 - [Official Website](https://www.powerduck.com/opensource/conf-patch.html)
 - [Documentation](https://www.powerduck.com/docs/conf-patch/introduction)
-- [Live Demo](https://www.powerduck.com/demo/conf-patch)
+- [Live Demo](https://www.powerduck.com/demo/)
 - [GitHub](https://github.com/powerducklab/conf-patch)
 - [npm](https://www.npmjs.com/package/@powerduck/conf-patch)
 
