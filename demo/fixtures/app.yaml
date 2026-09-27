@@ -1,4 +1,4 @@
-# PowerDuck service configuration
+# Powerduck service configuration
 service:
   name: powerduck
   enabled: true
