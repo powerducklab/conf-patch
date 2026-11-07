@@ -1,6 +1,6 @@
 {
   "name": "@powerduck/conf-patch",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Two-layer configuration editor: pure core for patching JSON/JSONC/YAML strings (browser-safe), plus file layer with atomic writes and locking for Node.js/Electron. RFC 6902 JSON Patch, comment and formatting preservation, OpenAPI validation.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -32,7 +32,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@powerduck/openapi-parser": "^0.3.12",
+    "@powerduck/openapi-parser": "^0.3.13",
     "jsonc-parser": "^3.3.1",
     "yaml": "^2.9.0"
   },
